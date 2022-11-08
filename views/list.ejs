@@ -1,0 +1,26 @@
+  <!-- use template in ejs for header and footer -->
+  <%- include("header")-%>
+
+    <!-- heading container -->
+    <div class="box" id="heading">
+      <h1><%= listTitle %></h1>
+    </div>
+
+    <div class="box">
+      <!-- need to add new items -->
+      <% for (var i = 0; i < newListItems.length; ++i) { %>
+        <div class="item">
+          <input type="checkbox">
+          <p><%= newListItems[i] %></p>
+        </div>
+
+      <% } %>
+
+      <form class="item" action="/" method="post">
+        <input type="text" name="newItem" placeholder="new item" value="" autocomplete="off">
+        <!-- place listTitle to button value field so that request body have [listName: listTitle] -->
+        <button type="submit" name="listName" value="<%= listTitle %>">+</button>
+      </form>
+    </div>
+
+  <%- include("footer")-%>
